@@ -1,0 +1,221 @@
+:root {
+    --background-color: #000; /* Fond noir en mode sombre */
+    --messages-bg-color: #000; /* Zone où les messages apparaissent */
+    --text-color: #fff;
+    --message-sent-color: #006eff;
+    --message-received-color: #3d3d3d;
+    --input-bg-color: #333;
+    --input-text-color: #fff;
+    --button-bg-color: #ffcc00;
+    --button-hover-color: #e6b800;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: var(--text-color);
+}
+
+#chat-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--messages-bg-color); /* Fond principal des messages */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--message-received-color);
+    border-bottom: 1px solid #333;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+#header button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--messages-bg-color); /* Fond principal des messages */
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.message .text {
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    max-width: 70%;
+    color: var(--text-color);
+}
+
+.message.sent .text {
+    background-color: var(--message-sent-color);
+    align-self: flex-end;
+}
+
+.message.received .text {
+    background-color: var(--message-received-color);
+    align-self: flex-start;
+}
+
+#input-container {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    border-top: 1px solid #333;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 20px;
+    font-size: 14px;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+#message-input::placeholder {
+    color: #aaa;
+}
+
+#send-btn {
+    background-color: var(--button-bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#send-btn:hover {
+    background-color: var(--button-hover-color);
+}
+
+#gallery-btn {
+    background-color: #555;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+}
+
+#gallery-btn:hover {
+    background-color: #444;
+}
+
+#file-input {
+    display: none;
+}
+
+/* Mode clair */
+.light-mode {
+    --background-color: #fff;
+    --messages-bg-color: #fff; /* Fond principal des messages en blanc */
+    --text-color: #000;
+    --message-sent-color: #f0f0f0;
+    --message-received-color: #e1e1e1;
+    --input-bg-color: #fff;
+    --input-text-color: #000;
+    --button-bg-color: #ffc107;
+    --button-hover-color: #ffca28;
+}
+
+/* Conteneur des confettis et ballons */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999; 
+}
+
+/* Confettis */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    background-color: red;
+    opacity: 0.7;
+    animation: fallConfetti 3s linear infinite;
+}
+
+@keyframes fallConfetti {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Ballons */
+.balloon {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    background-color: blue;
+    border-radius: 50%;
+    animation: riseBalloon 5s ease-in-out infinite;
+}
+
+@keyframes riseBalloon {
+    0% {
+        transform: translateY(100vh) scale(0.8);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
